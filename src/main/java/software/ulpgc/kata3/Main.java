@@ -19,5 +19,12 @@ public class Main {
             System.out.println(year + "\t" + stats.get(year));
         }
 
+        double[] years = stats.keySet().stream().mapToDouble(Integer::doubleValue).toArray();
+        double[] frequencies = stats.values().stream().mapToDouble(Integer::doubleValue).toArray();
+
+        BarChart barChart = new BarChart(years, frequencies);
+        MainFrame mainFrame = new MainFrame();
+        mainFrame.barChartDisplay().shows(barChart);
+        mainFrame.setVisible(true);
     }
 }
